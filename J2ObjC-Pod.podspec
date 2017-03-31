@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
   s.version          = '1.3.1'
   s.summary          = 'Integrates the pre-built J2ObjC frameworks into your project.'
   s.description      = <<-DESC
-  Downloads the J2ObjC v1.1 release and integrates the frameworks into your project.
+  Downloads the J2ObjC v1.3.1 release and integrates the frameworks into your project.
                        DESC
 
-  s.homepage         = 'https://github.com/dough-com/J2ObjC-Pod'
+  s.homepage         = 'https://bitbucket.org/smartika/j2objc-pod'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Dough' => 'developers@dough.com' }
-  s.source           = { :git => 'https://github.com/dough-com/J2ObjC-Pod.git', :tag => s.version.to_s }
+  s.author           = { 'Smartika' => 'info@smartika.com' }
+  s.source           = { :git => 'https://bitbucket.org/smartika/j2objc-pod.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
@@ -40,16 +40,16 @@ Pod::Spec.new do |s|
     lib.frameworks = 'Security'
     lib.osx.frameworks = 'ExceptionHandling'
     lib.pod_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' =>  "${PODS_ROOT}/#{s.name}/dist/include"
+      'HEADER_SEARCH_PATHS' =>  "${PODS_ROOT}/#{s.name}/dist/include/**"
     }
 
     lib.subspec 'all' do |all|
       all.dependency "#{s.name}/lib/jre"
-      # all.dependency 'J2ObjC-Pod/lib/jsr305'
-      # all.dependency 'J2ObjC-Pod/lib/guava'
+      # all.dependency "#{s.name}/lib/jsr305"
+      all.dependency "#{s.name}/lib/guava"
       all.dependency "#{s.name}/lib/javax_inject"
-      # all.dependency 'J2ObjC-Pod/lib/xalan'
-      # all.dependency 'J2ObjC-Pod/protobuf_runtime'
+      # all.dependency "#{s.name}/lib/xalan"
+      # all.dependency "#{s.name}/protobuf_runtime"
     end
 
     lib.subspec 'jre' do |jre|
@@ -58,19 +58,19 @@ Pod::Spec.new do |s|
     end
 
     # lib.subspec 'jsr305' do |jsr305|
-    #   jsr305.dependency 'J2ObjC-Pod/lib/jre'
+    #   jsr305.dependency "#{s.name}/lib/jre"
     #   jsr305.vendored_libraries = 'dist/lib/libjsr305.a'
     # end
 
     # lib.subspec 'junit' do |junit|
-    #   junit.dependency 'J2ObjC-Pod/lib/jre'
+    #   junit.dependency "#{s.name}/lib/jre"
     #   junit.vendored_libraries = 'dist/lib/libjunit.a', 'dist/lib/libmockito.a'
     # end
 
-    # lib.subspec 'guava' do |guava|
-    #   guava.dependency 'J2ObjC-Pod/lib/jre'
-    #   guava.vendored_libraries = 'dist/lib/libguava.a'
-    # end
+    lib.subspec 'guava' do |guava|
+      guava.dependency "#{s.name}/lib/jre"
+      guava.vendored_libraries = 'dist/lib/libguava.a'
+    end
 
     lib.subspec 'javax_inject' do |javax_inject|
       javax_inject.dependency "#{s.name}/lib/jre"
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
     end
 
     # lib.subspec 'xalan' do |xalan|
-    #   xalan.dependency 'J2ObjC-Pod/lib/jre'
+    #   xalan.dependency "#{s.name}/lib/jre"
     #   xalan.vendored_libraries = 'dist/lib/libxalan.a'
     # end
 
