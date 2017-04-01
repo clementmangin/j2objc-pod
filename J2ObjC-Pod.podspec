@@ -57,10 +57,10 @@ Pod::Spec.new do |s|
       jre.vendored_libraries = 'dist/lib/libjre_emul.a'
     end
 
-    # lib.subspec 'jsr305' do |jsr305|
-    #   jsr305.dependency "#{s.name}/lib/jre"
-    #   jsr305.vendored_libraries = 'dist/lib/libjsr305.a'
-    # end
+    lib.subspec 'jsr305' do |jsr305|
+      jsr305.dependency "#{s.name}/lib/jre"
+      jsr305.vendored_libraries = 'dist/lib/libjsr305.a'
+    end
 
     # lib.subspec 'junit' do |junit|
     #   junit.dependency "#{s.name}/lib/jre"
@@ -69,6 +69,7 @@ Pod::Spec.new do |s|
 
     lib.subspec 'guava' do |guava|
       guava.dependency "#{s.name}/lib/jre"
+      guava.dependency "#{s.name}/lib/jsr305"
       guava.vendored_libraries = 'dist/lib/libguava.a'
     end
 
