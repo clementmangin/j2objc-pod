@@ -60,6 +60,7 @@ Pod::Spec.new do |s|
     lib.subspec 'jsr305' do |jsr305|
       jsr305.dependency "#{s.name}/lib/jre"
       jsr305.vendored_libraries = 'dist/lib/libjsr305.a'
+      jsr305.libraries = 'jsr305'
     end
 
     # lib.subspec 'junit' do |junit|
@@ -71,6 +72,7 @@ Pod::Spec.new do |s|
       guava.dependency "#{s.name}/lib/jre"
       guava.dependency "#{s.name}/lib/jsr305"
       guava.vendored_libraries = 'dist/lib/libguava.a'
+      guava.libraries = 'guava'
     end
 
     lib.subspec 'javax_inject' do |javax_inject|
