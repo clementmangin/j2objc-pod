@@ -39,14 +39,14 @@ Pod::Spec.new do |s|
   s.subspec 'lib' do |lib|
     lib.frameworks = 'Security'
     lib.osx.frameworks = 'ExceptionHandling'
-    lib.pod_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' =>  "${PODS_ROOT}/#{s.name}/dist/include/**"
-    }
+    # lib.pod_target_xcconfig = {
+    #   'HEADER_SEARCH_PATHS' =>  "${PODS_ROOT}/#{s.name}/dist/include/**"
+    # }
 
     lib.subspec 'all' do |all|
       all.dependency "#{s.name}/lib/jre"
       # all.dependency "#{s.name}/lib/jsr305"
-      all.dependency "#{s.name}/lib/guava"
+      # all.dependency "#{s.name}/lib/guava"
       all.dependency "#{s.name}/lib/javax_inject"
       # all.dependency "#{s.name}/lib/xalan"
       # all.dependency "#{s.name}/protobuf_runtime"
@@ -60,7 +60,6 @@ Pod::Spec.new do |s|
     lib.subspec 'jsr305' do |jsr305|
       jsr305.dependency "#{s.name}/lib/jre"
       jsr305.vendored_libraries = 'dist/lib/libjsr305.a'
-      jsr305.libraries = 'jsr305'
     end
 
     # lib.subspec 'junit' do |junit|
@@ -72,7 +71,6 @@ Pod::Spec.new do |s|
       guava.dependency "#{s.name}/lib/jre"
       guava.dependency "#{s.name}/lib/jsr305"
       guava.vendored_libraries = 'dist/lib/libguava.a'
-      guava.libraries = 'guava'
     end
 
     lib.subspec 'javax_inject' do |javax_inject|
