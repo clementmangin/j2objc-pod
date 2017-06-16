@@ -10,10 +10,10 @@ class Pod::SpecHelper; end
 
 Pod::Spec.new do |s|
   s.name             = 'J2ObjC-Pod'
-  s.version          = '1.3.1'
+  s.version          = '2.0.1'
   s.summary          = 'Integrates the pre-built J2ObjC frameworks into your project.'
   s.description      = <<-DESC
-  Downloads the J2ObjC v1.3.1 release and integrates the frameworks into your project.
+  Downloads the J2ObjC v2.0.1 release and integrates the frameworks into your project.
                        DESC
 
   s.homepage         = 'https://bitbucket.org/smartika/j2objc-pod'
@@ -53,7 +53,7 @@ Pod::Spec.new do |s|
     end
 
     lib.subspec 'jre' do |jre|
-      jre.libraries = 'z', 'icucore'
+      jre.libraries = 'z', 'icucore', 'iconv'
       jre.vendored_libraries = 'dist/lib/libjre_emul.a'
     end
 
